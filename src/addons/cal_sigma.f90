@@ -55,23 +55,32 @@ call get_gf0kq(3,gf_tau,gfkq_tau)
 
 !Screened Coulomb potential W(tau)
 if (gw_mode.eq.1.or.(gw_mode.eq.0.and.iter_.eq.1)) then
- ! solve W
- call psolve_wtau(iq,nwloc,gf_tau,svq)
- !
- if (gw_mode.eq.0.and.scgwni.gt.1.and.mpi_grid_root((/dim_k/))) then
   if (mpi_grid_root()) then
-    write(151,'("writing svq_mat_q",I4.4)') iq
+    write(151,'(" ")')
+    write(151,'(" Call to the subrutine psolve_wtau is commented out for the moment, as it requires ScaLapack. ")')
+    write(151,'(" If you are sure you have ScaLapack support, then do:  ")')
+    write(151,'("   1. rename src/addons/psolve_wtau.f90.save to psolve_wtau.f90 ")')
+    write(151,'("   2. activate lines 67-83 of src/addons/cal_sigma.f90 ")')
     write(151,'(" ")')
     call flushifc(151)
   endif
-
-  write(fname,'("Temp_files/svq_mat_q",I4.4,"_ipq",I4.4)') iq, &
-       & mpi_grid_dim_pos(dim_q)
-  open(171,file=trim(adjustl(fname)),action='write',form='unformatted', &
-       & status='replace')
-  write(171) svq
-  close(171)
- endif
+!! ! solve W
+!! call psolve_wtau(iq,nwloc,gf_tau,svq)
+!! !
+!! if (gw_mode.eq.0.and.scgwni.gt.1.and.mpi_grid_root((/dim_k/))) then
+!!  if (mpi_grid_root()) then
+!!    write(151,'("writing svq_mat_q",I4.4)') iq
+!!    write(151,'(" ")')
+!!    call flushifc(151)
+!!  endif
+!!
+!!  write(fname,'("Temp_files/svq_mat_q",I4.4,"_ipq",I4.4)') iq, &
+!!       & mpi_grid_dim_pos(dim_q)
+!!  open(171,file=trim(adjustl(fname)),action='write',form='unformatted', &
+!!       & status='replace')
+!!  write(171) svq
+!!  close(171)
+!! endif
 elseif (gw_mode.eq.0.and.iter_.gt.1) then
  write(fname,'("Temp_files/svq_mat_q",I4.4,"_ipq",I4.4)') iq, mpi_grid_dim_pos(dim_q)
  inquire(file=trim(adjustl(fname)),exist=exst)
