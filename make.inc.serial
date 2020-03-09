@@ -2,40 +2,46 @@ MAKE = make
 
 # ============= must specify compilers
 
-## L.Zhang comments: 
+## L.Z. comments: 
 ## 
-## This is for GNU compilers. I have gcc/g++/gfortran and I used them to install OpenMPI.
+## (1) I have gcc/g++/gfortran and I used them to install OpenMPI.
 ## As result, I have mpif90/mpicc/mpicxx in my install directory: 
 ## /home/lzhang/openmpi-4.0.2-local/build/bin 
 ## You may install OpenMPI in any place you want. 
+##
+## (2) You can choose to use mpif90 or the non-MPI compiler (gfortran in my case). 
 ## 
-## After compiling the code successfully, the executable is 
+## (3) After compiling the code successfully, the executable is 
 ## ExcitingPlus-develop-serial/src/elk 
 ## 
-## For example I am in a test job folder and I have copied the executable here,
+## (4) For example I am in a test job folder and I have copied the executable here,
 ## then I can run the test job by doing: 
-## /home/lzhang/openmpi-4.0.2-local/build/bin/mpirun -np 1 ./elk
+## if you have used mpif90: /home/lzhang/openmpi-4.0.2-local/build/bin/mpirun -np 1 ./elk
+## if you have used gfortran: ./elk 
 
-F90 = /home/lzhang/openmpi-4.0.2-local/build/bin/mpif90
+## if you have mpif90 
+## F90 = /home/lzhang/openmpi-4.0.2-local/build/bin/mpif90
+## if you have gfortran only
+F90 = /usr/bin/gfortran
 
 # ============= must set Fortran90 compiler options
 
 ## ---- "-D_MPI_" will enable MPI
-##CPP_OPTS = -D_MPI_
-CPP_OPTS = 
+##CPP_OPTS = -D_MPI_              ## if you use mpif90
+CPP_OPTS =                      ## if you use just gfortran
 F90_OPTS      = -Ofast -Wall -cpp $(CPP_OPTS) 
 F90_LINK_OPTS = $(F90_OPTS)
 
 # ============= must have BLAS/LAPACK
 
-## L.Zhang comments:
+## L.Z. comments:
 ## I used the OS provided LAPACK and BLAS libraries.
 ## For example I use Ubuntu Linux 16.04. I install BLAS and LAPACK by doing: 
 ## sudo apt-get install libblas-dev liblapack-dev
 
 LAPACK_LIB = -lblas -llapack
 
-## L.Zhang comments: 
+## L.Z. comments: 
 ## try the following line if you use MKL for LAPACK and BLAS (but I didn't test this).
 ##LAPACK_LIB = -lmkl_core -lmkl_blacs_intelmpi_lp64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 
 
