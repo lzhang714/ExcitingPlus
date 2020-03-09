@@ -3,9 +3,18 @@ MAKE = make
 # ============= must specify compilers
 
 ## L.Zhang comments: 
-## This example is for GNU compilers. I have gcc/g++/gfortran and I used them to install OpenMPI.
-## As result, I have mpif90/mpicc/mpicxx in the install directory: /home/lzhang/openmpi-4.0.2-local/build/bin 
-## You may install OpenMPI in any place you like. 
+## 
+## This is for GNU compilers. I have gcc/g++/gfortran and I used them to install OpenMPI.
+## As result, I have mpif90/mpicc/mpicxx in my install directory: 
+## /home/lzhang/openmpi-4.0.2-local/build/bin 
+## You may install OpenMPI in any place you want. 
+## 
+## After compiling the code successfully, the executable is 
+## ExcitingPlus-develop-serial/src/elk 
+## 
+## For example I am in a test job folder and I have copied the executable here,
+## then I can run the test job by doing: 
+## /home/lzhang/openmpi-4.0.2-local/build/bin/mpirun -np 1 ./elk
 
 F90 = /home/lzhang/openmpi-4.0.2-local/build/bin/mpif90
 
