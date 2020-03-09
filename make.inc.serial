@@ -2,7 +2,7 @@ MAKE = make
 
 # ============= must specify compilers
 
-## L.Z. comments: 
+## Comments: 
 ## 
 ## (1) I have gcc/g++/gfortran and I used them to install OpenMPI.
 ## As result, I have mpif90/mpicc/mpicxx in my install directory: 
@@ -34,14 +34,14 @@ F90_LINK_OPTS = $(F90_OPTS)
 
 # ============= must have BLAS/LAPACK
 
-## L.Z. comments:
+## Comments:
 ## I used the OS provided LAPACK and BLAS libraries.
 ## For example I use Ubuntu Linux 16.04. I install BLAS and LAPACK by doing: 
 ## sudo apt-get install libblas-dev liblapack-dev
 
 LAPACK_LIB = -lblas -llapack
 
-## L.Z. comments: 
+## Comments: 
 ## try the following line if you use MKL for LAPACK and BLAS (but I didn't test this).
 ##LAPACK_LIB = -lmkl_core -lmkl_blacs_intelmpi_lp64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 
 
