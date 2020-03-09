@@ -1,0 +1,59 @@
+MAKE = make
+
+# ============= must specify compilers
+
+## L.Zhang comments: 
+## This example is for GNU compilers. I have gcc/g++/gfortran and I used them to install OpenMPI.
+## As result, I have mpif90/mpicc/mpicxx in the install directory: /home/lzhang/openmpi-4.0.2-local/build/bin 
+## You may install OpenMPI in any place you like. 
+
+F90 = /home/lzhang/openmpi-4.0.2-local/build/bin/mpif90
+
+# ============= must set Fortran90 compiler options
+
+## ---- "-D_MPI_" will enable MPI
+##CPP_OPTS = -D_MPI_
+CPP_OPTS = 
+F90_OPTS      = -Ofast -Wall -cpp $(CPP_OPTS) 
+F90_LINK_OPTS = $(F90_OPTS)
+
+# ============= must have BLAS/LAPACK
+
+## L.Zhang comments:
+## I used the OS provided LAPACK and BLAS libraries.
+## For example I use Ubuntu Linux 16.04. I install BLAS and LAPACK by doing: 
+## sudo apt-get install libblas-dev liblapack-dev
+
+LAPACK_LIB = -lblas -llapack
+
+## L.Zhang comments: 
+## try the following line if you use MKL for LAPACK and BLAS
+
+##LAPACK_LIB = -lmkl_core -lmkl_blacs_intelmpi_lp64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 
+
+# ============= optional FFTW support 
+##CPP_OPTS := $(CPP_OPTS) -D_NFFT_ -I/usr/local/include
+##FFTW_LIB = /usr/local/lib/libfftw3.a
+
+# ============= optional NFFT support ===
+##CPP_OPTS := $(CPP_OPTS) -D_NFFT_
+##NFFT_INC = -I$(HOME)/local/include
+##NFFT_LIB = $(HOME)/local/lib/libnfft3.a $(HOME)/local/lib/libfftw3.a
+
+# ============= optional libXC support 
+##CPP_OPTS := $(CPP_OPTS) ### -D_LIBXC_   ####-I/usr/local/include
+##XC_LIB = libxc.a libxcf90.a libxcf03.a
+
+# ============= optional HDF5 support 
+##CPP_OPTS := $(CPP_OPTS) -D_HDF5_ -I/usr/local/include
+##HDF5_LIB = /usr/local/lib/libhdf5hl_fortran.a /usr/local/lib/libhdf5_hl.a /usr/local/lib/libhdf5_fortran.a /usr/local/lib/libhdf5.a
+
+# ============= optional Madness API
+##CPP_OPTS := $(CPP_OPTS) -D_MAD_
+##MADNESS_INC = -I$(HOME)/local/include
+##MADNESS_LIB = -L$(HOME)/local/lib/ -lMADmra -lMADlinalg -lMADtensor -lMADmisc -lMADmuparser -lMADtinyxml -lMADworld -lmpichcxx -lstdc++
+
+# ============= must do: collecting all libraries
+
+LIBS = $(LAPACK_LIB) $(SCALAPACK_LIB) $(HDF5_LIB) $(FFTW_LIB) $(XC_LIB) 
+
