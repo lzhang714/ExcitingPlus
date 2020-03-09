@@ -57,7 +57,9 @@ EXE = elk
 #-------------------------------------------------------------------------------
 # Targets
 #-------------------------------------------------------------------------------
-all: gensrc extras elk
+all: gensrc elk lib
+##all: gensrc extras elk
+
 
 serial: F90_OPTS:=$(subst -D_MPI_,,$(F90_OPTS)) 
 serial: gensrc elk lib
