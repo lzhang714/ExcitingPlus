@@ -6,11 +6,11 @@ implicit none
 !
 integer,intent(in) :: fnum
 real(8), allocatable :: e_qp(:,:,:),e_ks(:,:,:),dk(:,:),vk(:,:)
-integer :: ierr1,ik,ikloc,isp1,i,ib,tmp,exst,ios
+integer :: ierr1,ik,ikloc,isp1,i,ib,tmp,ios
 real(8) :: dt,vc(3),d1k,d2k,dc12
 character*100 :: fspn,fname,fname_tot
 integer :: ndk
-logical exist
+logical exist, exst
 
 nbnd=qpnb(2)-qpnb(1)+1
 allocate(e_qp(nbnd,nspinor,nkptnr))
@@ -30,8 +30,8 @@ do ikloc=1,nkptnrloc
    write(fspn,'("_spn",I1.1)') isp1
   endif
   fname_tot=trim(adjustl(fname))//trim(adjustl(fspn))
-  inquire(file=fname_tot, exist=exist)
-  if (exist) then
+  inquire(file=fname_tot, exist=exst)
+  if (exst) then
    open(163,file=fname_tot,action='read',form="FORMATTED",status="old")
 
    do i=1,nbnd
