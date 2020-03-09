@@ -16,8 +16,8 @@ MAKE = make
 ## 
 ## (4) For example I am in a test job folder and I have copied the executable here,
 ## then I can run the test job by doing: 
-## if you have used mpif90: /home/lzhang/openmpi-4.0.2-local/build/bin/mpirun -np 1 ./elk
-## if you have used gfortran: ./elk 
+## if you use mpif90: /home/lzhang/openmpi-4.0.2-local/build/bin/mpirun -np 1 ./elk
+## if you use gfortran: ./elk 
 
 ## if you have mpif90 
 ## F90 = /home/lzhang/openmpi-4.0.2-local/build/bin/mpif90
