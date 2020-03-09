@@ -36,8 +36,7 @@ F90_LINK_OPTS = $(F90_OPTS)
 LAPACK_LIB = -lblas -llapack
 
 ## L.Zhang comments: 
-## try the following line if you use MKL for LAPACK and BLAS
-
+## try the following line if you use MKL for LAPACK and BLAS (but I didn't test this).
 ##LAPACK_LIB = -lmkl_core -lmkl_blacs_intelmpi_lp64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 
 
 # ============= optional FFTW support 
