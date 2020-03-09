@@ -110,37 +110,37 @@ enddo
 
 if (gw_restart) then
   ! exchange part from valence electrons
-  if (exxtype.eq.0) then
-    write(fname,'("Temp_files/tmp_Sx_ip",I4.4)') mpi_grid_dim_pos(dim_k)
-    inquire(file=trim(adjustl(fname)),exist=exst)
-
-    if (exst) then
-     open(166,file=trim(adjustl(fname)),action='read',form='unformatted',&
-             &status='old')
-     read(166) ik0
-     read(166) extmp
-     close(166)
-    else
-     write(*,'("Error reading tmp_Sx",I4)') mpi_grid_dim_pos(dim_k)
-     ik0=0
-    endif
-  endif
+!  if (exxtype.eq.0) then
+!    write(fname,'("Temp_files/tmp_Sx_ip",I4.4)') mpi_grid_dim_pos(dim_k)
+!    inquire(file=trim(adjustl(fname)),exist=exst)
+!
+!    if (exst) then
+!     open(166,file=trim(adjustl(fname)),action='read',form='unformatted',&
+!             &status='old')
+!     read(166) ik0
+!     read(166) extmp
+!     close(166)
+!    else
+!     write(*,'("Error reading tmp_Sx",I4)') mpi_grid_dim_pos(dim_k)
+!     ik0=0
+!    endif
+!  endif
 
 ! read-in the ex_vc array
- if (.not.rho_val) then
-   write(fname,'("Temp_files/tmp_Sx_core_ip",I4.4)') mpi_grid_dim_pos(dim_k)
-   inquire(file=trim(adjustl(fname)),exist=exst)
-
-   if (exst) then
-    open(166,file=trim(adjustl(fname)),form='unformatted',status='old')
-    read(166) ex_vc
-    read(166) ist0
-    close(166)
-   else
-    write(*,'("Error reading tmp_Sc_core!!",I4)') mpi_grid_dim_pos(dim_k)
-    ist0=0
-   endif
- endif
+! if (.not.rho_val) then
+!   write(fname,'("Temp_files/tmp_Sx_core_ip",I4.4)') mpi_grid_dim_pos(dim_k)
+!   inquire(file=trim(adjustl(fname)),exist=exst)
+!
+!   if (exst) then
+!    open(166,file=trim(adjustl(fname)),form='unformatted',status='old')
+!    read(166) ex_vc
+!    read(166) ist0
+!    close(166)
+!   else
+!    write(*,'("Error reading tmp_Sc_core!!",I4)') mpi_grid_dim_pos(dim_k)
+!    ist0=0
+!   endif
+! endif
 
 endif
 
