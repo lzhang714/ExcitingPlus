@@ -33,7 +33,6 @@ do ikloc=1,nkptnrloc
   inquire(file=fname_tot, exist=exst)
   if (exst) then
    open(163,file=fname_tot,action='read',form="FORMATTED",status="old")
-
    do i=1,nbnd
     read(163,*,iostat=ios) tmp,e_qp(i,isp1,ik),tmp,e_ks(i,isp1,ik)
    enddo !i
