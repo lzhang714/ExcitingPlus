@@ -3,15 +3,12 @@ MAKE = make
 # ============= must specify compilers
 
 ## Comments: 
-## 
-## (1) I have gcc/g++/gfortran and I used them to install OpenMPI.
-## As result, I have mpif90/mpicc/mpicxx in my install directory: 
-## /home/lzhang/openmpi-4.0.2-local/build/bin 
-## You may install OpenMPI in any place you want. 
 ##
-## (2) You can choose to use mpif90 or the non-MPI compiler (gfortran in my case). 
+## (1) You can choose to use mpif90 or the non-MPI compiler (gfortran in my case). 
+##
+## (2) It's assuming gcc/g++/gfortran were used to install OpenMPI.
 ## 
-## (3) After compiling the code successfully, the executable is 
+## (3) After compiling ExcitingPlus successfully, the executable is 
 ## ExcitingPlus-develop-serial/src/elk 
 ## 
 ## (4) For example I am in a test job folder and I have copied the executable here,
