@@ -1,7 +1,7 @@
-# EXCITING-Plus 
+# EXCITING-Plus :: branch - serial
 
-This is one branch of the origianl EXCITING-Plus FP-LAPW code plus a GW implementation. 
+This branch is created for compiling and running the code IN SERIAL on a personal laptop or desktop computer. 
 
-We will NEVER modify the master branch of this repository. The idea is to keep an intact version for reference. 
+You STILL NEED a MPI compiler like mpif90. It has been tested with OpenMPI installed using GNU compilers gcc/g++/gfortran.  
 
-Simple examples, including GW examples, are zipped in examples.tgz. 
+The code does not have distribution of any job. For example, if you run it using 4 ranks like "mpirun -np 4", it will simply run 4 copies of the whole calculation on 4 cores. So, using one rank is enough, i.e. "mpirun -np 1".
